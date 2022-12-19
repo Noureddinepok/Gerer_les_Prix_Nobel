@@ -24,15 +24,18 @@
             </tr>
 
             <?php
+            
+            
             $sql="SELECT * FROM nobels ORDER BY year DESC LIMIT 25";
-            $resultat = $Cnx->query($sql);
-                while($data = $resultat-> fetchAll(PDO :: FETCH_ASSOC)){
+            $statment = $Cnx->query($sql);
+            $rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+            foreach($rows as $row){
                 ?>
                 <tr>
-                    <td><?=$data['id']?></td>
-                    <td><?=$data['year']?></td>
-                    <td><?=$data['category']?></td>
-                    <td><?=$data['name']?></td>
+                    <td><?=$row['id']?></td>
+                    <td><?=$row['year']?></td>
+                    <td><?=$row['category']?></td>
+                    <td><?=$row['name']?></td>
                 </tr>
 
                 <?php
